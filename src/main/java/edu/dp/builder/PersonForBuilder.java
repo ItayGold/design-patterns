@@ -1,6 +1,6 @@
 package edu.dp.builder;
 
-class Person {
+class PersonForBuilder {
   public String name;
   public String position;
 
@@ -13,16 +13,16 @@ class Person {
   }
 }
 
-class PersonBuilder<SELF extends PersonBuilder<SELF>> {
-  protected Person person = new Person();
+class PersonBuilderFluentInterface<SELF extends PersonBuilderFluentInterface<SELF>> {
+  protected PersonForBuilder personForBuilder = new PersonForBuilder();
 
   public SELF withName(String name) {
-    person.name = name;
+    personForBuilder.name = name;
     return self();
   }
 
-  public Person build() {
-    return person;
+  public PersonForBuilder build() {
+    return personForBuilder;
   }
 
   protected SELF self() {
@@ -30,14 +30,14 @@ class PersonBuilder<SELF extends PersonBuilder<SELF>> {
   }
 }
 
-class EmployeeBuilder extends PersonBuilder<EmployeeBuilder> {
-  public EmployeeBuilder worksAt(String position) {
-    person.position = position;
+class EmployeeBuilderFluentInterface extends PersonBuilderFluentInterface<EmployeeBuilderFluentInterface> {
+  public EmployeeBuilderFluentInterface worksAt(String position) {
+    personForBuilder.position = position;
     return self();
   }
 
   @Override
-  protected EmployeeBuilder self() {
+  protected EmployeeBuilderFluentInterface self() {
     return this;
   }
 }
@@ -49,8 +49,8 @@ class DemoFluentInterface {
 //        .withName("Itay")
 //        .worksAt
 //        .build();
-    EmployeeBuilder pb = new EmployeeBuilder();
-    Person itay = pb
+    EmployeeBuilderFluentInterface pb = new EmployeeBuilderFluentInterface();
+    PersonForBuilder itay = pb
         .withName("Itay")
         .worksAt("Developer")
         .build();
