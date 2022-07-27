@@ -1,4 +1,4 @@
-package edu.dp.builder;
+package builder;
 
 class PersonForBuilder {
   public String name;

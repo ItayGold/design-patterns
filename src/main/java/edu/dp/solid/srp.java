@@ -67,6 +67,10 @@ class srp {
     p.saveToFile(j, filename, true);
 
     // windows!
-    Runtime.getRuntime().exec("notepad.exe " + filename);
+    Runtime runtime = Runtime.getRuntime();
+    String[] cmd = {"notepad.exe", "journal.txt"};
+//    String[] env = {"dev", "/src"};
+    File dir = new File("c:/Users/igold/Downloads");
+    runtime.exec(cmd, null, dir);
   }
 }

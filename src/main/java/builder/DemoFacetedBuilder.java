@@ -1,4 +1,4 @@
-package edu.dp.builder;
+package builder;
 
 class Person {
   public String streetAddress, postcode, city;
